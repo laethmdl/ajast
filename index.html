@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الموظفين</title>
+</head>
+<body>
+    <h1>إدارة الموظفين</h1>
+
+    <!-- إضافة موظف جديد -->
+    <form action="/add_employee" method="POST">
+        <label for="name">اسم الموظف:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="position">المنصب:</label>
+        <input type="text" id="position" name="position" required><br>
+
+        <label for="salary">الراتب الأساسي:</label>
+        <input type="number" step="0.01" id="salary" name="salary" required><br>
+
+        <label for="years_of_service">سنوات الخدمة:</label>
+        <input type="number" id="years_of_service" name="years_of_service" required><br>
+
+        <button type="submit">إضافة موظف</button>
+    </form>
+
+    <!-- قائمة الموظفين -->
+    <h2>قائمة الموظفين</h2>
+    <table border="1">
+        <tr>
+            <th>الاسم</th>
+            <th>المنصب</th>
+            <th>الراتب الأساسي</th>
+            <th>سنوات الخدمة</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/calculate_bonuses">حساب العلاوات والترقيات</a>
+</body>
+</html>

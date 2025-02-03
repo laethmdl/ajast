@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العلاوات والترقيات</title>
+</head>
+<body>
+    <h1>العلاوات والترقيات</h1>
+
+    <table border="1">
+        <tr>
+            <th>الاسم</th>
+            <th>المنصب</th>
+            <th>الراتب الأساسي</th>
+            <th>العلاوة</th>
+            <th>استحقاق الترقية</th>
+        </tr>
+        {% for bonus in bonuses %}
+        <tr>
+            <td>{{ bonus.name }}</td>
+            <td>{{ bonus.position }}</td>
+            <td>{{ bonus.salary }}</td>
+            <td>{{ bonus.bonus }}</td>
+            <td>{{ bonus.promotion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/">العودة إلى الصفحة الرئيسية</a>
+</body>
+</html>
