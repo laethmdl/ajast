@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>العلاوات والترقيات</title>
+    <title>إدارة الموظفين</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>العلاوات والترقيات</h1>
-
-    <table border="1">
-        <tr>
-            <th>الاسم</th>
-            <th>المنصب</th>
-            <th>الراتب الأساسي</th>
-            <th>العلاوة</th>
-            <th>استحقاق الترقية</th>
-        </tr>
-        {% for bonus in bonuses %}
-        <tr>
-            <td>{{ bonus.name }}</td>
-            <td>{{ bonus.position }}</td>
-            <td>{{ bonus.salary }}</td>
-            <td>{{ bonus.bonus }}</td>
-            <td>{{ bonus.promotion }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <a href="/">العودة إلى الصفحة الرئيسية</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">إدارة الموظفين</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calculate_bonuses">العلاوات والترقيات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/generate_report">توليد تقرير</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">تسجيل الخروج</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

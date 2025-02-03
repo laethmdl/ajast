@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>العلاوات والترقيات</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>المنصب</th>
+            <th>الراتب الأساسي</th>
+            <th>العلاوة</th>
+            <th>استحقاق الترقية</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bonus in bonuses %}
+        <tr>
+            <td>{{ bonus.name }}</td>
+            <td>{{ bonus.position }}</td>
+            <td>{{ bonus.salary }}</td>
+            <td>{{ bonus.bonus }}</td>
+            <td>{{ bonus.promotion }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/" class="btn btn-secondary">العودة إلى الصفحة الرئيسية</a>
+{% endblock %}
